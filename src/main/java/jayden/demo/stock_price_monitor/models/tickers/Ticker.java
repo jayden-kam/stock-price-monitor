@@ -9,12 +9,18 @@ public class Ticker {
     private int id;
     private int sourceId;
     private String name;
+    private int priceIndex;
     private List<Price> prices;
 
     public Ticker(int sourceId, String name) {
+        this(sourceId, name, -1);
+    }
+
+    public Ticker(int sourceId, String name, int priceIndex) {
         this.id = -1;
         this.sourceId = sourceId;
         this.name = name;
+        this.priceIndex = priceIndex;
     }
 
     public int getId() {
@@ -47,5 +53,13 @@ public class Ticker {
 
     public void setPrices(List<Price> prices) {
         this.prices = prices;
+    }
+
+    public int getPriceIndex() {
+        return priceIndex;
+    }
+
+    public void setPriceIndex(int priceIndex) {
+        this.priceIndex = priceIndex;
     }
 }

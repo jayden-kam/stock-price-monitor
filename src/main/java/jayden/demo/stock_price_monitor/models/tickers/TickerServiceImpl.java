@@ -50,8 +50,8 @@ public class TickerServiceImpl implements TickerService {
     }
 
     @Override
-    public Ticker findByIdAndSourceId(int id, int sourceId) {
-        Ticker ticker = storage.stream().filter(t -> t.getId() == id && t.getSourceId() == sourceId).findFirst().orElse(null);
+    public Ticker findById(int id) {
+        Ticker ticker = storage.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
         if (ticker != null) {
             ticker.setPrices(priceService.findByTickerId(ticker.getId()));
         }

@@ -55,6 +55,6 @@ public class TickerServiceTest {
     @Test
     public void findByIdAndSourceId_isSuccess() {
         // the second ticker has 3 prices (ticker_id = 2, source_id = 1)
-        Assert.assertEquals(3, tickerService.findByIdAndSourceId(2, 1).getPrices().size());
+        Assert.assertEquals(3, tickerService.findById(2).getPrices().size());
     }
 }

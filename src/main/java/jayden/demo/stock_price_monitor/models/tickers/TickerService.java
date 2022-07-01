@@ -13,5 +13,5 @@ public interface TickerService {
 
     List<Ticker> findBySourceId(int sourId);
 
-    Ticker findByIdAndSourceId(int id, int sourceId);
+    Ticker findById(int id);
 }
