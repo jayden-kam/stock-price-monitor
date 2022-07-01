@@ -33,4 +33,9 @@ public class PriceServiceImpl implements PriceService {
     public List<Price> findByTickerId(int tickerId) {
         return storage.stream().filter(price -> price.getTickerId() == tickerId).collect(Collectors.toList());
     }
+
+    @Override
+    public Price findByTickerIdAndLatestOne(int tickerId) {
+        return storage.stream().filter(price -> price.getTickerId() == tickerId).sorted().findFirst().orElse(null);
+    }
 }

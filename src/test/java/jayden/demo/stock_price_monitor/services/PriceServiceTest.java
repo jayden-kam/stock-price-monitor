@@ -15,11 +15,13 @@ public class PriceServiceTest {
     private PriceService priceService;
 
     @Before
-    public void init() {
+    public void init() throws InterruptedException {
         priceService = new PriceServiceImpl();
         priceService.add(new Price(1, 0.01));
         priceService.add(new Price(2, 0.11));
+        Thread.sleep(100);
         priceService.add(new Price(2, 0.12));
+        Thread.sleep(100);
         priceService.add(new Price(2, 0.13));
         priceService.add(new Price(3, 1.11));
     }
@@ -44,5 +46,10 @@ public class PriceServiceTest {
         Assert.assertEquals(3, priceService.findByTickerId(2).size());
         Assert.assertEquals(1, priceService.findByTickerId(3).size());
         Assert.assertEquals(0, priceService.findByTickerId(4).size());
+    }
+
+    @Test
+    public void findByTickerIdAndLatest_isSuccess() {
+        Assert.assertEquals(0.13, priceService.findByTickerIdAndLatestOne(2).getAmount(), 0.00);
     }
 }

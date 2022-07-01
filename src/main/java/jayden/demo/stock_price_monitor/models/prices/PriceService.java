@@ -12,4 +12,6 @@ public interface PriceService {
     List<Price> findAll();
 
     List<Price> findByTickerId(int tickerId);
+
+    Price findByTickerIdAndLatestOne(int tickerId);
 }
