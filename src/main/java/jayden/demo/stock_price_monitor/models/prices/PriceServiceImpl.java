@@ -35,7 +35,14 @@ public class PriceServiceImpl implements PriceService {
     }
 
     @Override
+    public List<Price> findByTickerIdAndLatest(int tickerId, int size) {
+        List<Price> result = findByTickerId(tickerId).stream().sorted().collect(Collectors.toList());
+        return result.size() > size ? result.subList(0, size) : result;
+    }
+
+    @Override
     public Price findByTickerIdAndLatestOne(int tickerId) {
-        return storage.stream().filter(price -> price.getTickerId() == tickerId).sorted().findFirst().orElse(null);
+        List<Price> result = findByTickerIdAndLatest(tickerId, 1);
+        return result.size() > 0 ? result.get(0) : null;
     }
 }
