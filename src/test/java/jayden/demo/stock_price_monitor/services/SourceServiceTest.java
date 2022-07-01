@@ -1,14 +1,14 @@
 package jayden.demo.stock_price_monitor.services;
 
-import jayden.demo.stock_price_monitor.prices.Price;
-import jayden.demo.stock_price_monitor.prices.PriceService;
-import jayden.demo.stock_price_monitor.prices.PriceServiceImpl;
-import jayden.demo.stock_price_monitor.sources.Source;
-import jayden.demo.stock_price_monitor.sources.SourceService;
-import jayden.demo.stock_price_monitor.sources.SourceServiceImpl;
-import jayden.demo.stock_price_monitor.tickers.Ticker;
-import jayden.demo.stock_price_monitor.tickers.TickerService;
-import jayden.demo.stock_price_monitor.tickers.TickerServiceImpl;
+import jayden.demo.stock_price_monitor.models.prices.Price;
+import jayden.demo.stock_price_monitor.models.prices.PriceService;
+import jayden.demo.stock_price_monitor.models.prices.PriceServiceImpl;
+import jayden.demo.stock_price_monitor.models.sources.Source;
+import jayden.demo.stock_price_monitor.models.sources.SourceService;
+import jayden.demo.stock_price_monitor.models.sources.SourceServiceImpl;
+import jayden.demo.stock_price_monitor.models.tickers.Ticker;
+import jayden.demo.stock_price_monitor.models.tickers.TickerService;
+import jayden.demo.stock_price_monitor.models.tickers.TickerServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

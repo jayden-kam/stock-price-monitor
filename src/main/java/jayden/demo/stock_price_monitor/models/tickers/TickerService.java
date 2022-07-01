@@ -1,4 +1,4 @@
-package jayden.demo.stock_price_monitor.tickers;
+package jayden.demo.stock_price_monitor.models.tickers;
 
 import org.springframework.stereotype.Service;
 

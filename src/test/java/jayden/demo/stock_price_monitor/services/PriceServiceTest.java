@@ -1,8 +1,8 @@
 package jayden.demo.stock_price_monitor.services;
 
-import jayden.demo.stock_price_monitor.prices.Price;
-import jayden.demo.stock_price_monitor.prices.PriceService;
-import jayden.demo.stock_price_monitor.prices.PriceServiceImpl;
+import jayden.demo.stock_price_monitor.models.prices.Price;
+import jayden.demo.stock_price_monitor.models.prices.PriceService;
+import jayden.demo.stock_price_monitor.models.prices.PriceServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

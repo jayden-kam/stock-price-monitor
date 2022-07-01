@@ -1,6 +1,6 @@
-package jayden.demo.stock_price_monitor.sources;
+package jayden.demo.stock_price_monitor.models.sources;
 
-import jayden.demo.stock_price_monitor.tickers.TickerService;
+import jayden.demo.stock_price_monitor.models.tickers.TickerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

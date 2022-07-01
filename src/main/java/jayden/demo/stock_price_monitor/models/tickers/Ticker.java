@@ -1,6 +1,6 @@
-package jayden.demo.stock_price_monitor.tickers;
+package jayden.demo.stock_price_monitor.models.tickers;
 
-import jayden.demo.stock_price_monitor.prices.Price;
+import jayden.demo.stock_price_monitor.models.prices.Price;
 
 import java.util.List;
 

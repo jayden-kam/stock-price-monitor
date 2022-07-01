@@ -1,4 +1,4 @@
-package jayden.demo.stock_price_monitor.sources;
+package jayden.demo.stock_price_monitor.models.sources;
 
 import org.springframework.stereotype.Service;
 
