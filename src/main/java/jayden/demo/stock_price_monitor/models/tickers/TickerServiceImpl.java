@@ -30,8 +30,8 @@ public class TickerServiceImpl implements TickerService {
     }
 
     @Override
-    public List<Ticker> findBySourceId(int sourId) {
-        return storage.stream().filter(ticker -> ticker.getSourceId() == sourId).collect(Collectors.toList());
+    public List<Ticker> findBySourceId(int sourceId) {
+        return storage.stream().filter(ticker -> ticker.getSourceId() == sourceId).collect(Collectors.toList());
     }
 
     @Override

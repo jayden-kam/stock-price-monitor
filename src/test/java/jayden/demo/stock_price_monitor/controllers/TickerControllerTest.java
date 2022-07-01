@@ -13,6 +13,6 @@ public class TickerControllerTest {
 
     @Test
     public void testGetRequest() {
-        Assertions.assertEquals(10, tickerController.get().size());
+        Assertions.assertEquals(10, tickerController.get(null).size());
     }
 }
