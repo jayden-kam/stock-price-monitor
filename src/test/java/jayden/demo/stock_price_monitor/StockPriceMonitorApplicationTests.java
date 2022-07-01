@@ -23,7 +23,7 @@ class StockPriceMonitorApplicationTests {
 
     @Test
     @Order(1)
-    void contextLoads() throws Exception {
+    void contextLoads() {
         Assertions.assertEquals(3, sourceService.findAll().size());
         Assertions.assertEquals(4, tickerService.findBySourceId(1).size());
         Assertions.assertEquals(3, tickerService.findBySourceId(2).size());

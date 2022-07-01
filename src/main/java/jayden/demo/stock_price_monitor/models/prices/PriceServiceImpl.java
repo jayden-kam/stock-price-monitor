@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 @Component
 public class PriceServiceImpl implements PriceService {
 
-    private static final int DEFAULT_CAPACITY = 1000;
+    private static final int DEFAULT_CAPACITY = 10000;
     private final List<Price> storage = new ArrayList<>(DEFAULT_CAPACITY);
     private int index = 0;
 

@@ -1,8 +1,5 @@
 package jayden.demo.stock_price_monitor.services;
 
-import jayden.demo.stock_price_monitor.models.prices.Price;
-import jayden.demo.stock_price_monitor.models.prices.PriceService;
-import jayden.demo.stock_price_monitor.models.prices.PriceServiceImpl;
 import jayden.demo.stock_price_monitor.models.tickers.Ticker;
 import jayden.demo.stock_price_monitor.models.tickers.TickerService;
 import jayden.demo.stock_price_monitor.models.tickers.TickerServiceImpl;
@@ -19,13 +16,7 @@ public class TickerServiceTest {
 
     @Before
     public void init() {
-        PriceService priceService = new PriceServiceImpl();
-        priceService.add(new Price(1, 0.01));
-        priceService.add(new Price(2, 0.11));
-        priceService.add(new Price(2, 0.12));
-        priceService.add(new Price(2, 0.13));
-        priceService.add(new Price(3, 1.11));
-        tickerService = new TickerServiceImpl(priceService);
+        tickerService = new TickerServiceImpl();
         tickerService.add(new Ticker(1, "ABC"));
         tickerService.add(new Ticker(1, "DEF"));
         tickerService.add(new Ticker(2, "GHI"));
@@ -53,8 +44,9 @@ public class TickerServiceTest {
     }
 
     @Test
-    public void findByIdAndSourceId_isSuccess() {
-        // the second ticker has 3 prices (ticker_id = 2, source_id = 1)
-        Assert.assertEquals(3, tickerService.findById(2).getPrices().size());
+    public void findById_isSuccess() {
+        Assert.assertEquals("ABC", tickerService.findById(1).getName());
+        Assert.assertEquals("DEF", tickerService.findById(2).getName());
+        Assert.assertEquals("GHI", tickerService.findById(3).getName());
     }
 }

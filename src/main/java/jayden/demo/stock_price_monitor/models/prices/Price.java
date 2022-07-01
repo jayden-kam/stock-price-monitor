@@ -1,5 +1,9 @@
 package jayden.demo.stock_price_monitor.models.prices;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 
 public class Price implements Comparable<Price> {
@@ -7,6 +11,7 @@ public class Price implements Comparable<Price> {
     private int id;
     private int tickerId;
     private double amount;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date timestamp;
 
     public Price(int tickerId, double amount) {
@@ -38,7 +43,7 @@ public class Price implements Comparable<Price> {
     }
 
     public double getAmount() {
-        return amount;
+        return new BigDecimal(amount).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
     public void setAmount(double amount) {

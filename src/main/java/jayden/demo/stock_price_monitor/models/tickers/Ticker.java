@@ -1,16 +1,14 @@
 package jayden.demo.stock_price_monitor.models.tickers;
 
-import jayden.demo.stock_price_monitor.models.prices.Price;
-
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Ticker {
 
     private int id;
     private int sourceId;
     private String name;
+    @JsonIgnore
     private int priceIndex;
-    private List<Price> prices;
 
     public Ticker(int sourceId, String name) {
         this(sourceId, name, -1);
@@ -45,14 +43,6 @@ public class Ticker {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Price> getPrices() {
-        return prices;
-    }
-
-    public void setPrices(List<Price> prices) {
-        this.prices = prices;
     }
 
     public int getPriceIndex() {

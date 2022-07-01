@@ -1,14 +1,9 @@
 package jayden.demo.stock_price_monitor.models.sources;
 
-import jayden.demo.stock_price_monitor.models.tickers.Ticker;
-
-import java.util.List;
-
 public class Source {
 
     private int id;
     private String name;
-    private List<Ticker> tickers;
 
     public Source(String name) {
         this.id = -1;
@@ -29,13 +24,5 @@ public class Source {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Ticker> getTickers() {
-        return tickers;
-    }
-
-    public void setTickers(List<Ticker> tickers) {
-        this.tickers = tickers;
     }
 }

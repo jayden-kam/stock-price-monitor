@@ -1,7 +1,5 @@
 package jayden.demo.stock_price_monitor.models.sources;
 
-import jayden.demo.stock_price_monitor.models.tickers.TickerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -14,16 +12,6 @@ public class SourceServiceImpl implements SourceService {
     private final List<Source> storage = new ArrayList<>(DEFAULT_CAPACITY);
     private int index = 0;
 
-    @Autowired
-    private TickerService tickerService;
-
-    public SourceServiceImpl() {
-    }
-
-    public SourceServiceImpl(TickerService tickerService) {
-        this.tickerService = tickerService;
-    }
-
     @Override
     public void add(Source source) {
         if (source.getId() != -1) {
@@ -35,7 +23,6 @@ public class SourceServiceImpl implements SourceService {
 
     @Override
     public List<Source> findAll() {
-        storage.forEach(source -> source.setTickers(tickerService.findBySourceId(source.getId())));
         List<Source> result = new ArrayList<>(storage.size());
         result.addAll(storage);
         return result;
@@ -43,10 +30,6 @@ public class SourceServiceImpl implements SourceService {
 
     @Override
     public Source findById(int id) {
-        Source source = storage.stream().filter(s -> s.getId() == id).findFirst().orElse(null);
-        if (source != null) {
-            source.setTickers(tickerService.findBySourceId(source.getId()));
-        }
-        return source;
+        return storage.stream().filter(s -> s.getId() == id).findFirst().orElse(null);
     }
 }

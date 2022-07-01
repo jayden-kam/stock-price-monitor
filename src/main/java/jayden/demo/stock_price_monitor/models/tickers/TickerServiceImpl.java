@@ -1,7 +1,5 @@
 package jayden.demo.stock_price_monitor.models.tickers;
 
-import jayden.demo.stock_price_monitor.models.prices.PriceService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,16 +13,6 @@ public class TickerServiceImpl implements TickerService {
     private final List<Ticker> storage = new ArrayList<>(DEFAULT_CAPACITY);
     private int index = 0;
 
-    @Autowired
-    private PriceService priceService;
-
-    public TickerServiceImpl() {
-    }
-
-    public TickerServiceImpl(PriceService priceService) {
-        this.priceService = priceService;
-    }
-
     @Override
     public void add(Ticker ticker) {
         if (ticker.getId() != -1) {
@@ -36,7 +24,6 @@ public class TickerServiceImpl implements TickerService {
 
     @Override
     public List<Ticker> findAll() {
-        storage.forEach(ticker -> ticker.setPrices(priceService.findByTickerId(ticker.getId())));
         List<Ticker> result = new ArrayList<>(storage.size());
         result.addAll(storage);
         return result;
@@ -44,17 +31,11 @@ public class TickerServiceImpl implements TickerService {
 
     @Override
     public List<Ticker> findBySourceId(int sourId) {
-        storage.stream().filter(ticker -> ticker.getSourceId() == sourId)
-                .forEach(ticker -> ticker.setPrices(priceService.findByTickerId(ticker.getId())));
         return storage.stream().filter(ticker -> ticker.getSourceId() == sourId).collect(Collectors.toList());
     }
 
     @Override
     public Ticker findById(int id) {
-        Ticker ticker = storage.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
-        if (ticker != null) {
-            ticker.setPrices(priceService.findByTickerId(ticker.getId()));
-        }
-        return ticker;
+        return storage.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
     }
 }
