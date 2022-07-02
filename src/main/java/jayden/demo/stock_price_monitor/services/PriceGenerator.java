@@ -16,10 +16,10 @@ public class PriceGenerator {
 
     public Price generate(Price latestPrice) {
         int index = tickerService.findById(latestPrice.getTickerId()).getPriceIndex();
-        double amount = latestPrice.getAmount();
+        double amount = latestPrice.getValue();
         boolean up = random.nextInt(index) < 5;
-        amount = up ? amount * (1 + (double) (1 + random.nextInt(index)) / 100) :
-                amount * (1 - (double) (1 + random.nextInt(index)) / 100);
+        amount = up ? amount * (1 + (double) (1 + random.nextInt(5)) / 100) :
+                amount * (1 - (double) (1 + random.nextInt(5)) / 100);
         return new Price(latestPrice.getTickerId(), amount);
     }
 }

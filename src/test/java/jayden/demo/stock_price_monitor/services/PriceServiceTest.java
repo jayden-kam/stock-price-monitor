@@ -58,8 +58,8 @@ public class PriceServiceTest {
 
     @Test
     public void findByTickerIdAndLatestOne_isSuccess() {
-        Assert.assertEquals(0.01, priceService.findByTickerIdAndLatestOne(1).getAmount(), 0.00);
-        Assert.assertEquals(0.13, priceService.findByTickerIdAndLatestOne(2).getAmount(), 0.00);
-        Assert.assertEquals(1.11, priceService.findByTickerIdAndLatestOne(3).getAmount(), 0.00);
+        Assert.assertEquals(0.01, priceService.findByTickerIdAndLatestOne(1).getValue(), 0.00);
+        Assert.assertEquals(0.13, priceService.findByTickerIdAndLatestOne(2).getValue(), 0.00);
+        Assert.assertEquals(1.11, priceService.findByTickerIdAndLatestOne(3).getValue(), 0.00);
     }
 }

@@ -7,6 +7,8 @@ import jayden.demo.stock_price_monitor.models.prices.PriceService;
 import jayden.demo.stock_price_monitor.models.sources.Source;
 import jayden.demo.stock_price_monitor.models.sources.SourceService;
 import jayden.demo.stock_price_monitor.models.tickers.TickerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -18,6 +20,8 @@ import java.util.List;
 @Service
 @EnableScheduling
 public class PriceSourceService {
+
+    private Logger log = LoggerFactory.getLogger(PriceSourceService.class);
 
     @Autowired
     private SourceService sourceService;
@@ -44,11 +48,12 @@ public class PriceSourceService {
             prices.add(0, newPrice);
             prices.remove(5);
             try {
-                messagingTemplate.convertAndSend("/topic/update-" + ticker.getName(),
+                messagingTemplate.convertAndSend("/topic/update-" + ticker.getId(),
                         objectMapper.writeValueAsString(prices));
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
+            log.info("Ticker [" + ticker.getName() + "] generate new price succeed!");
         });
     }
 
@@ -57,12 +62,12 @@ public class PriceSourceService {
         sourcing(sourceService.findById(1));
     }
 
-    @Scheduled(fixedDelay = 5000, initialDelay = 5000)
+    @Scheduled(fixedDelay = 5*1000, initialDelay = 5*1000)
     public void runSecondSource() {
         sourcing(sourceService.findById(2));
     }
 
-    @Scheduled(fixedDelay = 10000, initialDelay = 10000)
+    @Scheduled(fixedDelay = 10*1000, initialDelay = 10*1000)
     public void runThirdSource() {
         sourcing(sourceService.findById(3));
     }

@@ -40,7 +40,7 @@ class StockPriceMonitorApplicationTests {
         Assertions.assertEquals(5, priceService.findByTickerId(10).size());
         Assertions.assertEquals("SRC 1", sourceService.findById(1).getName());
         Assertions.assertEquals("GOOGL", tickerService.findById(4).getName());
-        Assertions.assertEquals(161.25, priceService.findByTickerIdAndLatestOne(9).getAmount());
+        Assertions.assertEquals(161.25, priceService.findByTickerIdAndLatestOne(9).getValue());
     }
 
     @Test
@@ -63,6 +63,6 @@ class StockPriceMonitorApplicationTests {
         Assertions.assertEquals(6, priceService.findByTickerId(10).size());
         Assertions.assertEquals("SRC 1", sourceService.findById(1).getName());
         Assertions.assertEquals("GOOGL", tickerService.findById(4).getName());
-        Assertions.assertNotEquals(161.25, priceService.findByTickerIdAndLatestOne(9).getAmount(), 0.0);
+        Assertions.assertNotEquals(161.25, priceService.findByTickerIdAndLatestOne(9).getValue(), 0.0);
     }
 }
